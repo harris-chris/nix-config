@@ -49,8 +49,7 @@ let
   github = ''
     [module/clickable-github]
     inherit = module/github
-    token = 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
-    #token = ''${file:${config.xdg.configHome}/polybar/github-notifications-token}
+    token = ''${file:${config.xdg.configHome}/polybar/github-notifications-token}
     user = harris-chris
     #label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
