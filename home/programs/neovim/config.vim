@@ -3,6 +3,14 @@ filetype off
 let mapleader = " "
 set shell=/run/current-system/sw/bin/fish
 
+" Allow macros over visual selection
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 " Better Unix support
 set viewoptions=folds,options,cursor,unix,slash
 set encoding=utf-8

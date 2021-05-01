@@ -18,6 +18,11 @@ in {
     };
     extraConfig = ''
       c.fonts.default_size = '8pt' 
+      c.fileselect.handler = 'external'
+      c.fileselect.single_file.command = ["alacritty", "-e", "nnn", "-p", "{}"]
+      c.fileselect.multiple_files.command = ["alacritty", "-e", "nnn", "-p", "{}"]
+      c.fileselect.folder.command = ["alacritty", "-e", "nnn", "-p", "{}"]
+      config.load_autoconfig(False) 
     '';
   };
 }

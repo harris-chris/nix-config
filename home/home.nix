@@ -6,6 +6,7 @@ let
   unzip_sjis = pkgs.callPackage ./scripts/unzip_sjis.nix { inherit config pkgs; };
 
   defaultPkgs = with pkgs; [
+    any-nix-shell
     arandr
     bolt
     exa

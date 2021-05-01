@@ -17,10 +17,10 @@ let
 
   customPlugins = pkgs.callPackage ./plugins.nix {};
 
- #fenv = {
- #  name = "foreign-env";
- #  src = pkgs.fishPlugins.foreign-env.src;
- #};
+  fenv = {
+   name = "foreign-env";
+   src = pkgs.fishPlugins.foreign-env.src;
+  };
 
   fishConfig = ''
     bind \t accept-autosuggestion
@@ -30,7 +30,7 @@ in
 {
   programs.fish = {
     enable = true;
-    plugins = [ customPlugins.theme ]; #fenv 
+    plugins = [ customPlugins.theme fenv ]; 
     promptInit = ''
       eval (direnv hook fish)
       any-nix-shell fish --info-right | source
@@ -44,7 +44,7 @@ in
       ".." = "cd ..";
       ping = "prettyping";
     };
-    #shellInit = fishConfig;
+    shellInit = fishConfig;
   };
 
   xdg.configFile."fish/functions/fish_prompt.fish".text = customPlugins.prompt;
