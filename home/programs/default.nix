@@ -6,6 +6,5 @@
    ./neovim
    ./qutebrowser
    ./rofi
-   #./spotify
    ./xmonad
 ]

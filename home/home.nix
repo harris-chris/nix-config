@@ -13,6 +13,7 @@ let
     fd
     gimp
     jq
+    julia153
     libreoffice
     libnotify
     maim
@@ -22,10 +23,12 @@ let
     niv
     nix-prefetch-scripts
     nnn
+    pass
     p7zip
     popupcommands
     popupcommands_confirm
     rnix-lsp
+    rofi-pass
     signal-desktop
     spotify
     tree
@@ -34,6 +37,15 @@ let
     zoom
   ];
 
+  julia_pkgs = import (builtins.fetchGit {
+      # Descriptive name to make the store path easier to identify                
+      name = "my-old-revision";                                                 
+      url = "https://github.com/NixOS/nixpkgs/";                       
+      ref = "refs/heads/nixpkgs-unstable";                     
+      rev = "bed08131cd29a85f19716d9351940bdc34834492";                                           
+  }) {};                                                                           
+  julia153 = julia_pkgs.julia;
+  
   polybarPkgs = with pkgs; [
     font-awesome-ttf      # awesome fonts
     material-design-icons # fonts with glyphs
@@ -95,6 +107,13 @@ in {
 
   programs = {
     bat.enable = true;
+    gpg.enable = true;
+    password-store.enable = true;
+    password-store.package = pkgs.pass;
+    password-store.settings = {
+      PASSWORD_STORE_DIR = "/data/gpg";
+      PASSWORD_STORE_KEY = "chrisharriscjh@gmail.com";
+    };
 
     direnv = {
       enable = true;
@@ -106,7 +125,6 @@ in {
       enable = true;
       enableFishIntegration = true;
     };
-    gpg.enable = true;
 
     htop = {
       enable = true;
