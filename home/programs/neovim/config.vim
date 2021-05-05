@@ -68,9 +68,6 @@ set smartcase
 " Spell check for markdown files
 au BufNewFile,BufRead *.md set spell
 
-" Close a buffer without closing the window
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-
 " Disable the annoying and useless ex-mode
 nnoremap Q <Nop>
 nnoremap gQ <Nop>

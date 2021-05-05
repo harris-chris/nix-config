@@ -10,6 +10,9 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 
+" bufkill
+nnoremap :bd :BD
+
 "Fzf
 nnoremap <silent> <leader><space> :Files<CR>
 nnoremap <silent> <leader>a :Buffers<CR>

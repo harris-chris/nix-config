@@ -15,6 +15,7 @@ let
       nerdtree-git-plugin
       vim-airline
       vim-airline-themes
+      vim-bufkill
       vim-devicons
       vim-fish
       vim-nix

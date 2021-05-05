@@ -16,12 +16,14 @@ let
     julia153
     libreoffice
     libnotify
+    lsof
     maim
     multilockscreen
     ncpamixer
     neovim-remote
     niv
     nix-prefetch-scripts
+    nmap
     nnn
     pass
     p7zip
@@ -31,6 +33,7 @@ let
     rofi-pass
     signal-desktop
     spotify
+    tmux
     tree
     which
     xclip

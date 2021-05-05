@@ -29,8 +29,8 @@ main' dbus = do
     terminal = "alacritty"
     , manageHook = manageDocks <+> myManageHook <+> manageHook def
     , modMask = mod4Mask
-    , borderWidth = 1
-    , focusedBorderColor = "Dark Blue"
+    , borderWidth = 2
+    , focusedBorderColor = "Dark Red"
     , workspaces = myWorkspaces
     , layoutHook = myLayoutHook
     , logHook = myPolybarLogHook dbus
@@ -42,7 +42,7 @@ myWorkspaces = ["Sys", "Msg", "1", "2", "3", "4", "Log"]
 workSpaceShortcuts = [xK_y, xK_u, xK_i, xK_o, xK_p, xK_bracketleft, xK_bracketright]
 
 myAdditionalKeys = 
-  [ ((mod4Mask, xK_w), spawn "qutebrowser")
+  [ ((mod4Mask, xK_w), spawn ("qutebrowser"))
   , ((mod4Mask, xK_s), spawn ("rofi-pass"))
   , ((mod4Mask, xK_d), spawn ("rofi -modi drun,ssh,window -show drun -show-icons"))
   , ((mod4Mask, xK_f), spawn ("popupCommands"))
@@ -61,7 +61,7 @@ myAdditionalKeys =
     
 togglePolybar = spawn "polybar-msg cmd toggle &"
 
-myLayoutHook = avoidStruts $ spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $ layoutHook def
+myLayoutHook = avoidStruts $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ layoutHook def
 
 ------------------------------------------------------------------------
 -- Polybar settings (needs DBus client).

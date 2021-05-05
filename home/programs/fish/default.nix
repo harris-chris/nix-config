@@ -43,6 +43,7 @@ in
       mfix = "mill mono.__.fix --rules OrganizeImports && mill mono._.reformat";
       ".." = "cd ..";
       ping = "prettyping";
+      "v"  = "nvr";
     };
     shellInit = fishConfig;
   };
