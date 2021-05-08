@@ -17,7 +17,7 @@ in {
       gh = "https://github.com/search?q={}";
     };
     extraConfig = ''
-      c.fonts.default_size = '6pt' 
+      c.fonts.default_size = '10pt' 
       c.fileselect.handler = 'external'
       c.fileselect.single_file.command = ["alacritty", "-e", "nnn", "-p", "{}"]
       c.fileselect.multiple_files.command = ["alacritty", "-e", "nnn", "-p", "{}"]

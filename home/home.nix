@@ -9,16 +9,21 @@ let
     any-nix-shell
     arandr
     bolt
+    docker
+    docker-compose
+    diff-so-fancy
     exa
     fd
     gimp
     jq
     julia153
+    killall
     libreoffice
     libnotify
     lsof
     maim
     multilockscreen
+    mysql-client
     ncpamixer
     neovim-remote
     niv
@@ -30,7 +35,6 @@ let
     popupcommands
     popupcommands_confirm
     rnix-lsp
-    rofi-pass
     signal-desktop
     spotify
     tmux
@@ -104,7 +108,7 @@ in {
 
     sessionVariables = {
       DISPLAY = ":0";
-      EDITOR = "nvim";
+      EDITOR = "nvr";
     };
   };
 
@@ -137,6 +141,7 @@ in {
 
     ssh.enable = true;
   };
+
 
   imports = (import ./programs) ++ (import ./services);
 }

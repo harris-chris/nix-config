@@ -6,5 +6,6 @@
    ./neovim
    ./qutebrowser
    ./rofi
+   ./rofi-pass
    ./xmonad
 ]

@@ -37,10 +37,8 @@ in
     '';
     shellAliases = {
       cat  = "bat";
-      du   = "ncdu --color dark -rr -x";
       ls   = "exa";
       ll   = "ls -a";
-      mfix = "mill mono.__.fix --rules OrganizeImports && mill mono._.reformat";
       ".." = "cd ..";
       ping = "prettyping";
       "v"  = "nvr";

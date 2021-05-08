@@ -11,7 +11,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 
 " bufkill
-nnoremap :bd :BD
+nnoremap <leader>q :BD<cr>
 
 "Fzf
 nnoremap <silent> <leader><space> :Files<CR>

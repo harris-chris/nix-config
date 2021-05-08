@@ -21,7 +21,7 @@
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = 6; #fontSize
+        size = 12; #fontSize
       };
       selection.save_to_clipboard = true;
       shell.program = "${pkgs.fish}/bin/fish";

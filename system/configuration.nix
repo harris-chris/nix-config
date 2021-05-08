@@ -46,9 +46,13 @@ in {
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome3.enable = true;
+    displayManager.sessionCommands = ''
+      ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+      Xft.dpi: 100
+    EOF
+    '';
   };
 
-  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
@@ -58,6 +62,8 @@ in {
     myfonts.icomoon-feather
   ];
 
+  virtualisation.docker.enable = true;
+  
   programs.fish.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.chris = {

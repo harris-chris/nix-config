@@ -51,7 +51,7 @@ let
     inherit = module/github
     token = ''${file:${config.xdg.configHome}/polybar/github-notifications-token}
     user = harris-chris
-    #label = %{A1:${openGithub}:}  %notifications%%{A}
+    label = %{A1:${openGithub}:}  %notifications%%{A}
   '';
 
   mpris = ''
@@ -93,7 +93,7 @@ in
       export WIFI_INTERFACE=$(${networkScript}/bin/check-network wifi)
       echo "Network interfaces $ETH_INTERFACE & $WIFI_INTERFACE"
       polybar top 2>${config.xdg.configHome}/polybar/logs/top.log & disown
-      polybar bottom 2>${config.xdg.configHome}/polybar/logs/bottom.log & disown
+      #polybar bottom 2>${config.xdg.configHome}/polybar/logs/bottom.log & disown
     '';
   };
 }
