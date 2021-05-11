@@ -8,7 +8,7 @@ pkgs.writeShellScriptBin "unzip_sjis" ''
       7z x $1
       shift
   done
-  convmv --notest -f shift-jis -t utf8 *.*
+  ${pkgs.convmv}/bin/convmv --notest -f shift-jis -t utf8 *.*
   LANG=$orig_lang
   exit 0
 ''

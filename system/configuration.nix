@@ -60,6 +60,8 @@ in {
     customFonts
     font-awesome-ttf
     myfonts.icomoon-feather
+    ipafont
+    kochi-substitute
   ];
 
   virtualisation.docker.enable = true;
