@@ -14,6 +14,7 @@ let
      nerdcommenter
      nerdtree
      nerdtree-git-plugin
+     telescope-nvim
      vim-airline
      vim-airline-themes
      vim-bufkill

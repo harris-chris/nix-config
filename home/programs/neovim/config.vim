@@ -48,9 +48,11 @@ set shiftwidth=2
 
 if has("nvim")
   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-  au FileType fzf tunmap <buffer> <Esc>
+  "au FileType fzf tunmap <buffer> <Esc>
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 endif
+
+nnoremap <C-p> :FZF<CR>
 
 set guicursor=
 

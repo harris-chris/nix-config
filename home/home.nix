@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 let
+  neovim-nightly = (import (builtins.fetchTarball {
+    url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+  }));
+
   popupcommands = pkgs.callPackage ./scripts/popupcommands.nix { inherit config pkgs; };
   popupcommands_confirm = pkgs.callPackage ./scripts/popupcommands_confirm.nix { inherit config pkgs; };
   unzip_sjis = pkgs.callPackage ./scripts/unzip_sjis.nix { inherit config pkgs; };
@@ -78,6 +82,8 @@ in {
       fish-foreign-env = pkgs.fishPlugins.foreign-env;
     };
   };
+
+  nixpkgs.overlays = [ neovim-nightly ];
 
   services.dunst = {
     enable = true;
