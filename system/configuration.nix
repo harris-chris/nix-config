@@ -21,10 +21,13 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.useDHCP = false;
   networking.interfaces.wlp1s0.useDHCP = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.extraHosts = ''
+    127.0.0.1 wumble.test
+  '';
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -39,18 +42,19 @@ in {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
-  services.tlp.enable = true;
+  #services.tlp.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome3.enable = true;
+    desktopManager.gnome.enable = true;
     displayManager.sessionCommands = ''
       ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
       Xft.dpi: 100
     EOF
     '';
+    #xkbOptions = "ctrl:nocaps";
   };
 
   sound.enable = true;
@@ -58,11 +62,30 @@ in {
 
   fonts.fonts = with pkgs; [
     customFonts
+    dejavu_fonts
     font-awesome-ttf
     myfonts.icomoon-feather
     ipafont
     kochi-substitute
   ];
+
+  fonts.fontconfig.defaultFonts = {
+    monospace = [
+      "JetBrainsMono"
+      "IPAGothic"
+    ];
+    sansSerif = [
+      "Ioveska"
+      "IPAPGothic"
+    ];
+    serif = [
+      "DejaVu Serif"
+      "IPAPMincho"
+    ];
+  };
+
+  i18n.inputMethod.enabled = "fcitx";
+  i18n.inputMethod.fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
 
   virtualisation.docker.enable = true;
   
@@ -76,10 +99,12 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-    environment.systemPackages = with pkgs; [
-      wget vim
-      firefox
-    ];
+  environment.systemPackages = with pkgs; [
+    wget vim
+    firefox
+  ];
+    
+  nixpkgs.config.allowUnfree = true;
 
   # List services that you want to enable:
 

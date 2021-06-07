@@ -8,6 +8,7 @@ let
   defaultPkgs = with pkgs; [
     any-nix-shell
     arandr
+    awscli2
     bolt
     docker
     docker-compose
@@ -109,6 +110,7 @@ in {
     sessionVariables = {
       DISPLAY = ":0";
       EDITOR = "nvr";
+      JULIA_DEPOT_PATH = "/home/chris/.julia";
     };
   };
 
