@@ -44,6 +44,6 @@ in
       "*.jvmopts"      # should be local to every project
     ];
     userEmail = "chrisharriscjh@gmail.com";
-    userName = "Chris Harris";
+    userName = "harris-chris";
   };
 }

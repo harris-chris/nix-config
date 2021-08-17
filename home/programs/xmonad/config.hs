@@ -8,6 +8,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.InsertPosition
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Paste
@@ -108,6 +109,6 @@ myPolybarLogHook dbus = dynamicLogWithPP (polybarHook dbus)
 
 --myManageHook = isDialog --> doF W.shiftMaster <+> doF W.swapDown
 --myManageHook = composeAll []
-myManageHook = composeOne
+myManageHook = insertPosition Below Newer <+> composeOne
   [ return True -?> doF W.swapDown
   ]

@@ -1,15 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
+
+   programs.seahorse.enable = false;
    services = {
       gnome.gnome-keyring.enable = true;
       upower.enable = true;
       
       xserver = {
          enable = true;
-	 displayManager = {
-            defaultSession = "none+xmonad";
-	 };
+         displayManager = {
+                  defaultSession = "none+xmonad";
+         };
          windowManager.xmonad = {
             enable = true;
             enableContribAndExtras = true;

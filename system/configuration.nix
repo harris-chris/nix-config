@@ -8,6 +8,7 @@ let
     ];
   };
   myfonts = pkgs.callPackage fonts/default.nix { inherit pkgs; };
+  udevRules = pkgs.callPackage ./udev/default.nix { inherit pkgs; };
 
 in {
   imports =
@@ -56,6 +57,10 @@ in {
     '';
     #xkbOptions = "ctrl:nocaps";
   };
+
+  # For xilinx vivado
+  nix.sandboxPaths = ["/opt"];
+  services.udev.packages = [ udevRules ];
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;

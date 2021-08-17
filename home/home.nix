@@ -14,14 +14,17 @@ let
     arandr
     awscli2
     bolt
+    ccls
     docker
     docker-compose
     diff-so-fancy
     exa
     fd
+    gcc
     gimp
     jq
-    julia153
+    julia-stable-bin
+    haskell-language-server
     killall
     libreoffice
     libnotify
@@ -48,15 +51,6 @@ let
     xclip
     zoom
   ];
-
-  julia_pkgs = import (builtins.fetchGit {
-      # Descriptive name to make the store path easier to identify                
-      name = "my-old-revision";                                                 
-      url = "https://github.com/NixOS/nixpkgs/";                       
-      ref = "refs/heads/nixpkgs-unstable";                     
-      rev = "bed08131cd29a85f19716d9351940bdc34834492";                                           
-  }) {};                                                                           
-  julia153 = julia_pkgs.julia;
   
   polybarPkgs = with pkgs; [
     font-awesome-ttf      # awesome fonts

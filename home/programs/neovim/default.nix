@@ -4,8 +4,8 @@ let
   plugins = pkgs.vimPlugins;
 
   myVimPlugins = with plugins; [
-     coc-nvim
-     coc-metals
+     #coc-nvim
+     #coc-metals
      fzf-vim
      lightline-vim
      iceberg-vim
@@ -14,6 +14,8 @@ let
      nerdcommenter
      nerdtree
      nerdtree-git-plugin
+     nvim-lspconfig
+     #nvim-metals
      telescope-nvim
      vim-airline
      vim-airline-themes
@@ -22,7 +24,7 @@ let
      vim-gnupg
      vim-fish
      vim-nix
-     vim-scala
+     #vim-scala
   ];
 
   baseConfig = builtins.readFile ./config.vim;
@@ -34,7 +36,7 @@ let
 in {
   programs.neovim = {
     enable        = true;
-    withPython3 = true;
+    withPython3   = true;
     extraConfig   = vimConfig;
     plugins       = myVimPlugins;
     withNodeJs    = true;
