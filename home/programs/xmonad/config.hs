@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
+import XMonad.Layout.TrackFloating
 import XMonad.Layout.Spacing
 import XMonad.Layout.ResizableTile
 import XMonad.Hooks.DynamicLog
@@ -9,6 +10,7 @@ import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.RefocusLast (refocusLastLayoutHook, refocusLastWhen, isFloat)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Paste
@@ -35,6 +37,7 @@ main' dbus = do
     , workspaces = myWorkspaces
     , layoutHook = myLayoutHook
     , logHook = myPolybarLogHook dbus
+    , handleEventHook = myEventHook
     } `additionalKeys` myAdditionalKeys
 
 --toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
@@ -62,7 +65,14 @@ myAdditionalKeys =
     
 togglePolybar = spawn "polybar-msg cmd toggle &"
 
-myLayoutHook = avoidStruts $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ layoutHook def
+myLayoutHook = avoidStruts  
+  $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True
+  $ refocusLastLayoutHook . trackFloating 
+  $ layoutHook def
+
+myEventHook = refocusLastEventHook
+    where
+        refocusLastEventHook = refocusLastWhen isFloat
 
 ------------------------------------------------------------------------
 -- Polybar settings (needs DBus client).
@@ -109,6 +119,7 @@ myPolybarLogHook dbus = dynamicLogWithPP (polybarHook dbus)
 
 --myManageHook = isDialog --> doF W.shiftMaster <+> doF W.swapDown
 --myManageHook = composeAll []
-myManageHook = insertPosition Below Newer <+> composeOne
-  [ return True -?> doF W.swapDown
-  ]
+myManageHook = insertPosition Below Newer 
+-- <+> composeOne
+  --[ return True -?> doF W.swapDown
+  --]
