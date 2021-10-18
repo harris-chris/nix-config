@@ -9,12 +9,12 @@ let
   popupcommands_confirm = pkgs.callPackage ./scripts/popupcommands_confirm.nix { inherit config pkgs; };
   unzip_sjis = pkgs.callPackage ./scripts/unzip_sjis.nix { inherit config pkgs; };
 
+
   defaultPkgs = with pkgs; [
     any-nix-shell
     arandr
     awscli2
     bolt
-    ccls
     docker
     docker-compose
     diff-so-fancy
@@ -22,6 +22,7 @@ let
     fd
     gcc
     gimp
+    gnumake
     jq
     julia-stable-bin
     haskell-language-server
@@ -45,11 +46,19 @@ let
     rnix-lsp
     signal-desktop
     spotify
+    steamcmd
     tmux
     tree
     which
     xclip
     zoom
+  ];
+
+  lsps = with pkgs; [
+    ccls
+    #hls
+    metals
+    rust-analyzer
   ];
   
   polybarPkgs = with pkgs; [
@@ -104,7 +113,7 @@ in {
   home = {
     username = "chris";
     homeDirectory = "/home/chris";
-    packages = defaultPkgs ++ polybarPkgs ++ scripts ++ xmonadPkgs;
+    packages = defaultPkgs ++ lsps ++ polybarPkgs ++ scripts ++ xmonadPkgs;
     stateVersion = "21.03";
 
     sessionVariables = {

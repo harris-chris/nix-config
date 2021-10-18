@@ -58,12 +58,28 @@ in {
     #xkbOptions = "ctrl:nocaps";
   };
 
+  # Binary Cache for Haskell.nix
+  nix.binaryCachePublicKeys = [
+    "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+  ];
+  nix.binaryCaches = [
+    "https://hydra.iohk.io"
+  ];
+
   # For xilinx vivado
   nix.sandboxPaths = ["/opt"];
   services.udev.packages = [ udevRules ];
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = [ pkgs.vaapiIntel ];
+  };
+  #environment.variables = {
+    #MESA_GL_VERSION_OVERRIDE = "2.1";
+  #};
 
   fonts.fonts = with pkgs; [
     customFonts
@@ -101,6 +117,8 @@ in {
       extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
       shell = pkgs.fish;
     };
+
+  programs.steam.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

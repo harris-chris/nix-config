@@ -4,9 +4,6 @@ let
   plugins = pkgs.vimPlugins;
 
   myVimPlugins = with plugins; [
-     #coc-nvim
-     #coc-metals
-     fzf-vim
      lightline-vim
      iceberg-vim
      julia-vim
@@ -15,7 +12,6 @@ let
      nerdtree
      nerdtree-git-plugin
      nvim-lspconfig
-     #nvim-metals
      telescope-nvim
      vim-airline
      vim-airline-themes
@@ -24,7 +20,7 @@ let
      vim-gnupg
      vim-fish
      vim-nix
-     #vim-scala
+     vimwiki
   ];
 
   baseConfig = builtins.readFile ./config.vim;

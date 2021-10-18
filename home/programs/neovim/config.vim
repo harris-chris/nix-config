@@ -77,4 +77,3 @@ nnoremap gQ <Nop>
 " Disable background (let picom manage it)
 hi Normal guibg=NONE ctermbg=NONE
 
-
