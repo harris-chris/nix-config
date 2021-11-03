@@ -22,40 +22,26 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   networking.hostName = "nixos"; # Define your hostname.
   networking.useDHCP = false;
-  networking.interfaces.wlp1s0.useDHCP = true;
-  networking.extraHosts = ''
-    127.0.0.1 wumble.test
-  '';
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-  #services.tlp.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    displayManager.sessionCommands = ''
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
-      Xft.dpi: 100
-    EOF
-    '';
-    #xkbOptions = "ctrl:nocaps";
+    #displayManager.sessionCommands = ''
+      #${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+      #Xft.dpi: 60
+    #EOF
+    #'';
+    xkbOptions = "ctrl:nocaps";
   };
 
   # Binary Cache for Haskell.nix

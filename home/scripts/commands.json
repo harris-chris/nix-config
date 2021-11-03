@@ -8,10 +8,6 @@
     "command": "bluetoothctl power off"
   },
   {
-    "name": "fabbit",
-    "command": "sh $HOME/.screenlayout/fabbit.sh"
-  },
-  {
     "name": "home",
     "command": "sh $HOME/.screenlayout/home.sh"
   },
@@ -36,13 +32,13 @@
     "command": "alacritty -e nnn -c"
   },
   {
-    "name": "vol",
-    "command": "alacritty -e ncpamixer"
-  },
-  {
     "name": "power off",
     "confirm": true,
     "command": "systemctl poweroff"
+  },
+  {
+    "name": "raptor vpn on",
+    "command": "alacritty -e gksudo openfortivpn 129.227.183.244:10443 -u charris -p B9dcyn0ZfGJU --trusted-cert 4c303ff8ed7a08f7f7a7b61e98cc8f69962cf8e4b1d15e207b50d6a8dd11280d"
   },
   {
     "name": "reboot",
@@ -52,5 +48,9 @@
   {
     "name": "suspend",
     "command": "systemctl suspend"
+  },
+  {
+    "name": "vol",
+    "command": "alacritty -e ncpamixer"
   }
 ]

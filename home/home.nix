@@ -136,7 +136,7 @@ in {
     direnv = {
       enable = true;
       enableFishIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
 
     fzf = {
@@ -146,8 +146,7 @@ in {
 
     htop = {
       enable = true;
-      sortDescending = true;
-      sortKey = "PERCENT_CPU";
+      settings.sort_key = "PERCENT_CPU";
     };
 
     ssh.enable = true;

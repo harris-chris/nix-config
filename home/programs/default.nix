@@ -3,6 +3,7 @@
    ./chromium
    ./fish
    ./git
+   ./mercurial
    ./neovim
    ./qutebrowser
    ./rofi
